@@ -1,0 +1,38 @@
+.drawer {
+  position: fixed;
+  right: 0;
+  transform: translateX(100%);
+  height: 100%;
+  width: 33%;
+  min-width: 300px;
+  transition: all 0.3s ease;
+  background-color: #fafafa;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto 1fr;
+  grid-template-areas: 'title close' 'menu menu';
+}
+
+.drawerIsOpen {
+  composes: drawer;
+  transform: translateX(0);
+}
+
+.title {
+  grid-area: title;
+  line-height: 4rem;
+  margin: 0.5rem;
+}
+
+.close {
+  grid-area: close;
+  align-self: center;
+  width: 4rem;
+  height: 4rem;
+  margin: 0.5rem;
+}
+
+.menu {
+  grid-area: menu;
+}
