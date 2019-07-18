@@ -9,7 +9,9 @@
   },
   "dependencies": {
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1",
+    "react-spring": "^8.0.27"
   },
   "homepage": "./",
   "main": "src/electron-starter.js",

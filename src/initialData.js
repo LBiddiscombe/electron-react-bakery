@@ -1113,7 +1113,7 @@ const data =
 
 let i = 0;
 
-const categories = data.Categories.Category.map(cat => {return {id: ++i, label: cat.name, image: cat.image, parent: 0}})
+const categories = data.Categories.Category.map(cat => {return {id: ++i, label: cat.name, image: cat.image, parent: 0, type: 'menu'}})
 let products = []
 categories.forEach(cat => {
    const datacat = data.Categories.Category.find(c => c.name === cat.label)
@@ -1123,6 +1123,7 @@ categories.forEach(cat => {
          label: p.name,
          image: p.image,
          parent: cat.id,
+         type: 'product',
          data: {
             barcode: p.barcode,
             price: p.price

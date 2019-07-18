@@ -1,14 +1,13 @@
 import React from 'react'
-import logo from '../../images/logo.svg'
+import { Link } from 'react-router-dom'
 import styles from './HomePage.module.css'
-import Navbar from '../../components/Navbar'
-import ProductGrid from './ProductGrid'
 
 const HomePage = () => {
   return (
     <div className={styles.wrapper}>
-      <Navbar />
-      <ProductGrid />
+      <h1>
+        <Link to={`/0`}>Start Here</Link>
+      </h1>
     </div>
   )
 }
