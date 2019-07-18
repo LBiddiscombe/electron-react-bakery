@@ -1,15 +1,19 @@
 import React from 'react'
+import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import styles from './HomePage.module.css'
 
 const HomePage = () => {
   return (
-    <div className={styles.wrapper}>
+    <Wrapper>
       <h1>
         <Link to={`/0`}>Start Here</Link>
       </h1>
-    </div>
+    </Wrapper>
   )
 }
+
+const Wrapper = styled.div`
+  text-align: center;
+`
 
 export default HomePage

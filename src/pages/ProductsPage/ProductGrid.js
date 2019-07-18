@@ -1,12 +1,12 @@
 import React from 'react'
-import styles from './ProductGrid.module.css'
+import styled from 'styled-components'
 import ProductCard from './ProductCard'
 import { items } from '../../initialData.js'
 
 const ProductGrid = ({ parentId }) => {
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.grid}>
+    <Wrapper>
+      <Grid>
         {items
           .filter(i => i.parent === Number(parentId))
           .map(item => (
@@ -18,9 +18,22 @@ const ProductGrid = ({ parentId }) => {
               type={item.type}
             />
           ))}
-      </div>
-    </div>
+      </Grid>
+    </Wrapper>
   )
 }
+
+const Wrapper = styled.div`
+  width: 100%;
+  margin: 0rem auto;
+  padding: 0.5rem 0;
+`
+
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 10rem);
+  grid-gap: 1rem;
+  justify-content: center;
+`
 
 export default ProductGrid
