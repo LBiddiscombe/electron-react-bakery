@@ -1,35 +1,28 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { Link } from 'react-router-dom'
 import placeholder from '../../images/placeholder.png'
+import arrow from '../../images/chevron-right.svg'
 import styled from 'styled-components'
-import BakeryLabel from './BakeryLabel'
 
 const ProductCard = props => {
-  const [showLabel, setShowLabel] = useState(false)
-  const { label, image } = props.product
+  const { id, label, image } = props.product
   const src = image ? `images/${image.replace(/\\/g, '/')}` : placeholder
-
-  const onLabelClose = e => {
-    setShowLabel(false)
-    e.stopPropagation()
-  }
-
   return (
-    <Card onClick={() => setShowLabel(true)}>
-      <Image src={src} alt={label} />
-      <Content>
-        <Label>
-          <span>{label.toUpperCase()}</span>
-        </Label>
-      </Content>
-      {showLabel && (
-        <BakeryLabel product={props.product} onClick={onLabelClose} />
-      )}
-    </Card>
+    <Link to={`/${id}`}>
+      <Card>
+        <Image src={src} alt={label} />
+        <Content>
+          <Label>
+            <span>{label.toUpperCase()}</span>
+            <img src={arrow} alt='' />
+          </Label>
+        </Content>
+      </Card>
+    </Link>
   )
 }
 
 const Card = styled.div`
-  cursor: pointer;
   position: relative;
   width: 10rem;
   height: 8rem;
