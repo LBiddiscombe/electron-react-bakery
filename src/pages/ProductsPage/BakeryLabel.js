@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import dayjs from 'dayjs'
+import Barcode from 'react-barcode'
 import useLockBodyScroll from '../../hooks/useLockBodyScroll'
 import { ReactComponent as Logo } from '../../images/logo.svg'
 
@@ -8,6 +10,9 @@ import { ReactComponent as Logo } from '../../images/logo.svg'
 const BakeryLabel = ({ product, onClick }) => {
   useLockBodyScroll()
   const { title, allergens, price, life, barcode } = product.labelData
+  const bestbefore = dayjs(new Date())
+    .add(life, 'day')
+    .format('DD/MM/YYYY')
 
   const formatPrice = price => {
     if (price < 1) return `${parseInt(price * 100)}p`
@@ -27,9 +32,17 @@ const BakeryLabel = ({ product, onClick }) => {
         <Title>{title}</Title>
         <Allergens>{allergens}</Allergens>
         <Price>{formatPrice(price)}</Price>
-        <BestBefore>Best Before: 22/07/2019</BestBefore>
-        <Barcode>1234</Barcode>
-        <Ean>1234</Ean>
+        <BestBefore>
+          Best Before: <strong>{bestbefore}</strong>
+        </BestBefore>
+        <Barcode
+          value={`${barcode}456789012345`}
+          width={1}
+          height={35}
+          fontSize={12}
+          margin={0}
+          marginBottom={10}
+        />
       </Label>
     </Wrapper>
   )
@@ -48,15 +61,17 @@ const Wrapper = styled.div`
 `
 
 const Label = styled.div`
+  transform: scale(1.5);
   height: 75mm;
   width: 57mm;
   border-radius: 1mm;
   background-color: white;
   display: grid;
   grid-auto-flow: column;
-  grid-template-rows: 13mm 1fr auto 1fr auto auto auto;
-  grid-template-areas: 'header' 'title' 'allergens' 'price' 'bestbefore' 'barcode' 'ean';
+  grid-template-rows: 13mm 1fr auto 1fr auto auto;
+  grid-template-areas: 'header' 'title' 'allergens' 'price' 'bestbefore' 'barcode';
   align-items: center;
+  justify-items: center;
 `
 
 const Header = styled.div`
@@ -101,17 +116,12 @@ const Price = styled.div`
 
 const BestBefore = styled.div`
   grid-area: bestbefore;
-  font-size: 0.9rem;
-  font-weight: bold;
+  font-size: 0.8rem;
 `
 
-const Barcode = styled.div`
+const Barcode2 = styled.div`
   grid-area: barcode;
   height: 9mm;
-`
-
-const Ean = styled.div`
-  grid-area: ean;
 `
 
 export default BakeryLabel

@@ -29,7 +29,7 @@ const NavBar = styled.div`
   max-height: 5rem;
   text-align: center;
   svg {
-    color: #00B1E7;
+    color: var(--primary-dark);
     fill: currentColor;
   }
 `
@@ -43,7 +43,6 @@ const CoopLogo = styled(Logo)`
   :hover {
     cursor: grab;
   }
-  svg
 `
 
 const Title = styled.h1`
