@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import logo from '../images/logo.svg'
+import { ReactComponent as Logo } from '../images/logo.svg'
 import menu from '../images/menu.svg'
 import styled from 'styled-components'
 
@@ -10,7 +10,7 @@ const Navbar = () => {
   return (
     <NavBar>
       <Link to={`/`}>
-        <Logo src={logo} alt='logo' />
+        <CoopLogo />
       </Link>
       <Title>Bakery Labels</Title>
       <Menu onClick={() => setIsOpen(true)}>
@@ -28,17 +28,22 @@ const NavBar = styled.div`
   background-color: var(--primary-light);
   max-height: 5rem;
   text-align: center;
+  svg {
+    color: #00B1E7;
+    fill: currentColor;
+  }
 `
 
-const Logo = styled.img`
+const CoopLogo = styled(Logo)`
   grid-area: logo;
   width: 4rem;
   height: 4rem;
   margin: 0.5rem;
   -webkit-app-region: drag;
-  & :hover {
+  :hover {
     cursor: grab;
   }
+  svg
 `
 
 const Title = styled.h1`
