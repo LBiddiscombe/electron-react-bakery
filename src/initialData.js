@@ -1124,9 +1124,12 @@ categories.forEach(cat => {
          image: p.image,
          parent: cat.id,
          type: 'product',
-         data: {
-            barcode: p.barcode,
-            price: p.price
+         labelData: {
+            title: p.DescriptionBold,
+            allergens: p.Description,
+            price: p.price,
+            life: p.ShelfLife,
+            barcode: p.barcode
          }
       })
    })
