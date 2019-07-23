@@ -21,6 +21,9 @@ const Navbar = ({ title }) => {
 }
 
 const NavBar = styled.div`
+  position: sticky;
+  top: 0;
+  z-index: 10;
   display: grid;
   grid-template-columns: auto 1fr auto;
   grid-template-areas: 'logo title menu';
