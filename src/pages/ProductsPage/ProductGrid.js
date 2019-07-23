@@ -2,19 +2,16 @@ import React from 'react'
 import styled from 'styled-components'
 import MenuCard from './MenuCard'
 import ProductCard from './ProductCard'
-import { items } from '../../initialData.js'
 
-const ProductGrid = ({ parentId }) => {
+const ProductGrid = ({ cards }) => {
   return (
     <Wrapper>
       <Grid>
-        {items
-          .filter(i => i.parent === Number(parentId))
-          .map(item => {
-            if (item.type === 'menu')
-              return <MenuCard key={item.id} product={item} />
-            else return <ProductCard key={item.id} product={item} />
-          })}
+        {cards.map(card => {
+          if (card.type === 'menu')
+            return <MenuCard key={card.id} product={card} />
+          else return <ProductCard key={card.id} product={card} />
+        })}
       </Grid>
     </Wrapper>
   )
