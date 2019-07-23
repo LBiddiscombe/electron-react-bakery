@@ -6,7 +6,7 @@ import Navbar from '../../components/Navbar'
 const HomePage = () => {
   return (
     <Wrapper>
-      <Navbar />
+      <Navbar title='Bakery' />
       <h1>
         <Link to={`/0`}>Start Here</Link>
       </h1>

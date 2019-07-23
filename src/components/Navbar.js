@@ -4,7 +4,7 @@ import { ReactComponent as Logo } from '../images/logo.svg'
 import menu from '../images/menu.svg'
 import styled from 'styled-components'
 
-const Navbar = () => {
+const Navbar = ({ title }) => {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -12,7 +12,7 @@ const Navbar = () => {
       <Link to={`/`}>
         <CoopLogo />
       </Link>
-      <Title>Bakery Labels</Title>
+      <Title>{title}</Title>
       <Menu onClick={() => setIsOpen(true)}>
         <img src={menu} alt='menu' />
       </Menu>
