@@ -1,5 +1,9 @@
 ## Todo
 
+- Add landing screen image
+- Add menu drawer
+  - Production PDF
+  - About
 - Imports
   - BAPS.xml
     - spin up a v simple api to host the file as json
