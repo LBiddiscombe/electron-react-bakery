@@ -31,6 +31,7 @@ const NavBar = styled.div`
   background-color: var(--primary-light);
   max-height: 5rem;
   text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   svg {
     color: var(--primary-dark);
     fill: currentColor;
