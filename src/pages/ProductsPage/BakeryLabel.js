@@ -1,14 +1,17 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 import styled from 'styled-components'
 import dayjs from 'dayjs'
 import Barcode from 'react-barcode'
 import useLockBodyScroll from '../../hooks/useLockBodyScroll'
+import useBlurModalBG from '../../hooks/useBlurModalBG'
 import { ReactComponent as Logo } from '../../images/logo.svg'
 
 // 57mm x 75mm (13mm header)
 
 const BakeryLabel = ({ product, onClick }) => {
   useLockBodyScroll()
+  useBlurModalBG(document.getElementById('root'))
   const { title, allergens, price, life, barcode } = product.labelData
   const bestbefore = dayjs(new Date())
     .add(life, 'day')
@@ -22,7 +25,7 @@ const BakeryLabel = ({ product, onClick }) => {
     }).format(price)
   }
 
-  return (
+  return ReactDOM.createPortal(
     <Wrapper onClick={onClick}>
       <Label>
         <Header>
@@ -44,7 +47,8 @@ const BakeryLabel = ({ product, onClick }) => {
           marginBottom={10}
         />
       </Label>
-    </Wrapper>
+    </Wrapper>,
+    document.getElementById('modals')
   )
 }
 
@@ -57,11 +61,12 @@ const Wrapper = styled.div`
   left: 0;
   display: grid;
   place-items: center center;
-  background-color: #00000099;
+  background-color: #ffffffcc;
 `
 
 const Label = styled.div`
   transform: scale(1.5);
+  transition: all 1s ease;
   height: 75mm;
   width: 57mm;
   border-radius: 1mm;
@@ -72,6 +77,7 @@ const Label = styled.div`
   grid-template-areas: 'header' 'title' 'allergens' 'price' 'bestbefore' 'barcode';
   align-items: center;
   justify-items: center;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
 `
 
 const Header = styled.div`
